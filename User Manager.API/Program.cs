@@ -1,4 +1,10 @@
+using CORE_Layer.Helper;
+using CORE_Layer.Services;
 using Data_Access_Layer.ContextDb;
+using Data_Access_Layer.Interfaces;
+using Data_Access_Layer.Repositories;
+using Db_Builder.Models.User_Manager;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,9 +17,20 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
-// App Context 
+// App Context connection string
     builder.Services.AddDbContext<UserContext>(options =>
          options.UseSqlServer(builder.Configuration.GetConnectionString("AppConn")));
+
+
+    // Generic Repository
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IUserService, UserServices>();
+builder.Services.AddAutoMapper(typeof(SecurityProfile));
+
+builder.Services.AddIdentity<AppUser, IdentityRole>()
+           .AddEntityFrameworkStores<UserContext>()
+           .AddDefaultTokenProviders();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

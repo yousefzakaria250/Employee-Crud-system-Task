@@ -5,6 +5,8 @@ G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\User M
 G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\User Manager.API.runtimeconfig.json
 G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\User Manager.API.dll
 G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\User Manager.API.pdb
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\AutoMapper.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\Humanizer.dll
 G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
