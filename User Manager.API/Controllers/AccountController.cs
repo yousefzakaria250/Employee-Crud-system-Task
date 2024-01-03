@@ -1,5 +1,7 @@
 ﻿using CORE_Layer.Dtos;
+using CORE_Layer.Helper;
 using CORE_Layer.Services;
+using Db_Builder.Models.User_Manager;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,7 +22,33 @@ namespace User_Manager.API.Controllers
         {
             var result = await _userservice.Add(UserDto);
             return Ok(result);
+        }
 
+
+        [HttpGet("GetAllUser")]
+        public async Task<ActionResult<GetUserDto>> GetAll()
+        {
+            var result = await _userservice.GetAllUsers();
+            if (result == null)
+                return Ok(new Response<AppUser>(404, "No Users yet"));
+            return Ok(result);
+        }
+
+        [HttpGet("GetUser")]
+        public async Task<ActionResult<GetUserDto>> GetUser(string id)
+        {
+            var res = await _userservice.Get(id);
+            if (res == null)
+                return NotFound("Can`t Find This User");
+            return Ok(res);
+        }
+
+
+        [HttpPut("UpdateForAdmin")]
+        public async Task<IActionResult> Update(UpdateUserDto userDto)
+        {
+            var res = await _userservice.UpdateUser(userDto);
+            return Ok(res);
         }
     }
 }
