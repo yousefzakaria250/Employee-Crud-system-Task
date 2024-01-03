@@ -5,6 +5,7 @@ using Data_Access_Layer.Interfaces;
 using Data_Access_Layer.Repositories;
 using Db_Builder.Models.User_Manager;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,5 +42,35 @@ namespace CORE_Layer.Services
           
             return new Response<AppUser>(200, "Employee added successfully");
         }
+
+        public async Task<GetUserDto> Get(string id)
+        {
+
+            var user = await _AppUserManager.FindByIdAsync(id);
+            var result = _mapper.Map<AppUser, GetUserDto>(user);
+            return result;
+        }
+
+        public async Task<List<GetUserDto>> GetAllUsers()
+        {
+            var Employees = await _unitOfWork.Repository<AppUser>().GetAllAsync();
+            var Result = _mapper.Map<List<GetUserDto>>(Employees);
+            return Result;
+
+        }
+
+     
+
+        public async Task<Response<AppUser>> UpdateUser(UpdateUserDto userDTO)
+        {
+            var user = await _AppUserManager.FindByIdAsync(userDTO.Id);
+            if (user == null)
+                return new Response<AppUser>(404, "Can`t Find This Employee");
+
+            var result = _mapper.Map<UpdateUserDto,AppUser>(userDTO);
+             _unitOfWork.Repository<AppUser>().Update(result);
+            await _unitOfWork.Complete();
+            return new Response<AppUser>(200, "Employee Updated Successfully");
+        }
     }
-}
+    }

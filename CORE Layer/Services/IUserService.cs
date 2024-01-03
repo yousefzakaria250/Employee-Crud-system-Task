@@ -13,6 +13,11 @@ namespace CORE_Layer.Services
     {
         Task<Response<AppUser>> Add(AddUserDto userDTO);
 
+        Task<List<GetUserDto>> GetAllUsers();
+
+        Task<GetUserDto> Get(string id);
+        Task<Response<AppUser>> UpdateUser(UpdateUserDto userDTO);
+
 
 
     }

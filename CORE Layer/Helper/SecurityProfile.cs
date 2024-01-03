@@ -14,6 +14,9 @@ namespace CORE_Layer.Helper
        public SecurityProfile() {
 
             CreateMap<AppUser, AddUserDto>().ReverseMap();
+            CreateMap<AppUser, UpdateUserDto>().ReverseMap();
+            CreateMap<AppUser, GetUserDto>()
+                .ForMember(D => D.State, O => O.MapFrom(S => S.DegreeState.State));
         }
     }
 }
