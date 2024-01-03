@@ -1,0 +1,15 @@
+G:\ProjectExamples23\TP.API.Crud_System\Data Access Layer\bin\Debug\net6.0\Data Access Layer.deps.json
+G:\ProjectExamples23\TP.API.Crud_System\Data Access Layer\bin\Debug\net6.0\Data Access Layer.dll
+G:\ProjectExamples23\TP.API.Crud_System\Data Access Layer\bin\Debug\net6.0\Data Access Layer.pdb
+G:\ProjectExamples23\TP.API.Crud_System\Data Access Layer\bin\Debug\net6.0\Db-Builder.dll
+G:\ProjectExamples23\TP.API.Crud_System\Data Access Layer\bin\Debug\net6.0\Db-Builder.pdb
+G:\ProjectExamples23\TP.API.Crud_System\Data Access Layer\obj\Debug\net6.0\Data Access Layer.csproj.AssemblyReference.cache
+G:\ProjectExamples23\TP.API.Crud_System\Data Access Layer\obj\Debug\net6.0\Data Access Layer.GeneratedMSBuildEditorConfig.editorconfig
+G:\ProjectExamples23\TP.API.Crud_System\Data Access Layer\obj\Debug\net6.0\Data Access Layer.AssemblyInfoInputs.cache
+G:\ProjectExamples23\TP.API.Crud_System\Data Access Layer\obj\Debug\net6.0\Data Access Layer.AssemblyInfo.cs
+G:\ProjectExamples23\TP.API.Crud_System\Data Access Layer\obj\Debug\net6.0\Data Access Layer.csproj.CoreCompileInputs.cache
+G:\ProjectExamples23\TP.API.Crud_System\Data Access Layer\obj\Debug\net6.0\Data Access Layer.csproj.CopyComplete
+G:\ProjectExamples23\TP.API.Crud_System\Data Access Layer\obj\Debug\net6.0\Data Access Layer.dll
+G:\ProjectExamples23\TP.API.Crud_System\Data Access Layer\obj\Debug\net6.0\refint\Data Access Layer.dll
+G:\ProjectExamples23\TP.API.Crud_System\Data Access Layer\obj\Debug\net6.0\Data Access Layer.pdb
+G:\ProjectExamples23\TP.API.Crud_System\Data Access Layer\obj\Debug\net6.0\ref\Data Access Layer.dll

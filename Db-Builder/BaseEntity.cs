@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Db_Builder
 {
-    internal class BaseEntity
+    public class BaseEntity
     {
+        public int Id { set; get;  }
     }
 }

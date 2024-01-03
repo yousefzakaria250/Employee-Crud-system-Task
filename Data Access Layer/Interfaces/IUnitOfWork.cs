@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Data_Access_Layer.Interfaces
 {
-    internal interface IUnitOfWork
+    public interface IUnitOfWork :IDisposable
     {
+        IGenericRepository<TEntity> Repository<TEntity>() where TEntity : class;
+        Task<int> Complete();
     }
 }

@@ -1,0 +1,17 @@
+G:\ProjectExamples23\TP.API.Crud_System\CORE Layer\bin\Debug\net6.0\CORE Layer.deps.json
+G:\ProjectExamples23\TP.API.Crud_System\CORE Layer\bin\Debug\net6.0\CORE Layer.dll
+G:\ProjectExamples23\TP.API.Crud_System\CORE Layer\bin\Debug\net6.0\CORE Layer.pdb
+G:\ProjectExamples23\TP.API.Crud_System\CORE Layer\bin\Debug\net6.0\Data Access Layer.dll
+G:\ProjectExamples23\TP.API.Crud_System\CORE Layer\bin\Debug\net6.0\Db-Builder.dll
+G:\ProjectExamples23\TP.API.Crud_System\CORE Layer\bin\Debug\net6.0\Data Access Layer.pdb
+G:\ProjectExamples23\TP.API.Crud_System\CORE Layer\bin\Debug\net6.0\Db-Builder.pdb
+G:\ProjectExamples23\TP.API.Crud_System\CORE Layer\obj\Debug\net6.0\CORE Layer.csproj.AssemblyReference.cache
+G:\ProjectExamples23\TP.API.Crud_System\CORE Layer\obj\Debug\net6.0\CORE Layer.GeneratedMSBuildEditorConfig.editorconfig
+G:\ProjectExamples23\TP.API.Crud_System\CORE Layer\obj\Debug\net6.0\CORE Layer.AssemblyInfoInputs.cache
+G:\ProjectExamples23\TP.API.Crud_System\CORE Layer\obj\Debug\net6.0\CORE Layer.AssemblyInfo.cs
+G:\ProjectExamples23\TP.API.Crud_System\CORE Layer\obj\Debug\net6.0\CORE Layer.csproj.CoreCompileInputs.cache
+G:\ProjectExamples23\TP.API.Crud_System\CORE Layer\obj\Debug\net6.0\CORE Layer.csproj.CopyComplete
+G:\ProjectExamples23\TP.API.Crud_System\CORE Layer\obj\Debug\net6.0\CORE Layer.dll
+G:\ProjectExamples23\TP.API.Crud_System\CORE Layer\obj\Debug\net6.0\refint\CORE Layer.dll
+G:\ProjectExamples23\TP.API.Crud_System\CORE Layer\obj\Debug\net6.0\CORE Layer.pdb
+G:\ProjectExamples23\TP.API.Crud_System\CORE Layer\obj\Debug\net6.0\ref\CORE Layer.dll

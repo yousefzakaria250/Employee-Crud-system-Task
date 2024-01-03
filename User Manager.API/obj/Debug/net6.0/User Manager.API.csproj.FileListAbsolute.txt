@@ -1,0 +1,79 @@
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\appsettings.Development.json
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\appsettings.json
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\User Manager.API.exe
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\User Manager.API.deps.json
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\User Manager.API.runtimeconfig.json
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\User Manager.API.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\User Manager.API.pdb
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\Humanizer.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\Microsoft.Identity.Client.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\Microsoft.OpenApi.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\System.Drawing.Common.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\System.Runtime.Caching.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\System.Security.Permissions.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\System.Windows.Extensions.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\CORE Layer.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\Data Access Layer.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\Db-Builder.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\CORE Layer.pdb
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\Data Access Layer.pdb
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\bin\Debug\net6.0\Db-Builder.pdb
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\obj\Debug\net6.0\User Manager.API.csproj.AssemblyReference.cache
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\obj\Debug\net6.0\User Manager.API.GeneratedMSBuildEditorConfig.editorconfig
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\obj\Debug\net6.0\User Manager.API.AssemblyInfoInputs.cache
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\obj\Debug\net6.0\User Manager.API.AssemblyInfo.cs
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\obj\Debug\net6.0\User Manager.API.csproj.CoreCompileInputs.cache
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\obj\Debug\net6.0\User Manager.API.MvcApplicationPartsAssemblyInfo.cs
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\obj\Debug\net6.0\User Manager.API.MvcApplicationPartsAssemblyInfo.cache
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\obj\Debug\net6.0\staticwebassets\msbuild.User Manager.API.Microsoft.AspNetCore.StaticWebAssets.props
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\obj\Debug\net6.0\staticwebassets\msbuild.build.User Manager.API.props
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.User Manager.API.props
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.User Manager.API.props
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\obj\Debug\net6.0\staticwebassets.pack.json
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\obj\Debug\net6.0\staticwebassets.build.json
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\obj\Debug\net6.0\staticwebassets.development.json
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\obj\Debug\net6.0\scopedcss\bundle\User Manager.API.styles.css
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\obj\Debug\net6.0\User Manager.API.csproj.CopyComplete
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\obj\Debug\net6.0\User Manager.API.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\obj\Debug\net6.0\refint\User Manager.API.dll
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\obj\Debug\net6.0\User Manager.API.pdb
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\obj\Debug\net6.0\User Manager.API.genruntimeconfig.cache
+G:\ProjectExamples23\TP.API.Crud_System\User Manager.API\obj\Debug\net6.0\ref\User Manager.API.dll

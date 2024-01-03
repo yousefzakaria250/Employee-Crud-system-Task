@@ -1,0 +1,14 @@
+G:\ProjectExamples23\TP.API.Crud_System\Db-Builder\bin\Debug\net6.0\Db-Builder.deps.json
+G:\ProjectExamples23\TP.API.Crud_System\Db-Builder\bin\Debug\net6.0\Db-Builder.runtimeconfig.json
+G:\ProjectExamples23\TP.API.Crud_System\Db-Builder\bin\Debug\net6.0\Db-Builder.dll
+G:\ProjectExamples23\TP.API.Crud_System\Db-Builder\bin\Debug\net6.0\Db-Builder.pdb
+G:\ProjectExamples23\TP.API.Crud_System\Db-Builder\obj\Debug\net6.0\Db-Builder.csproj.AssemblyReference.cache
+G:\ProjectExamples23\TP.API.Crud_System\Db-Builder\obj\Debug\net6.0\Db-Builder.GeneratedMSBuildEditorConfig.editorconfig
+G:\ProjectExamples23\TP.API.Crud_System\Db-Builder\obj\Debug\net6.0\Db-Builder.AssemblyInfoInputs.cache
+G:\ProjectExamples23\TP.API.Crud_System\Db-Builder\obj\Debug\net6.0\Db-Builder.AssemblyInfo.cs
+G:\ProjectExamples23\TP.API.Crud_System\Db-Builder\obj\Debug\net6.0\Db-Builder.csproj.CoreCompileInputs.cache
+G:\ProjectExamples23\TP.API.Crud_System\Db-Builder\obj\Debug\net6.0\Db-Builder.dll
+G:\ProjectExamples23\TP.API.Crud_System\Db-Builder\obj\Debug\net6.0\refint\Db-Builder.dll
+G:\ProjectExamples23\TP.API.Crud_System\Db-Builder\obj\Debug\net6.0\Db-Builder.pdb
+G:\ProjectExamples23\TP.API.Crud_System\Db-Builder\obj\Debug\net6.0\Db-Builder.genruntimeconfig.cache
+G:\ProjectExamples23\TP.API.Crud_System\Db-Builder\obj\Debug\net6.0\ref\Db-Builder.dll
