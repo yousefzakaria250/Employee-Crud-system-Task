@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CORE_Layer.Dtos;
 using CORE_Layer.Helper;
+using CORE_Layer.Specification.Employee_Specs;
 using Data_Access_Layer.Interfaces;
 using Data_Access_Layer.Repositories;
 using Db_Builder.Models.User_Manager;
@@ -43,6 +44,18 @@ namespace CORE_Layer.Services
             return new Response<AppUser>(200, "Employee added successfully");
         }
 
+        public async Task<Response<AppUser>> DeleteUser(string userId)
+        {
+            var AppUser = await _AppUserManager.FindByIdAsync(userId);
+
+            if (AppUser == null)
+                return new Response<AppUser>(404, "this User does not exist");
+
+            _unitOfWork.Repository<AppUser>().Delete(AppUser);
+            await _unitOfWork.Complete();
+            return new Response<AppUser>(200, "User is Deleted successfully");
+        }
+
         public async Task<GetUserDto> Get(string id)
         {
 
@@ -59,7 +72,16 @@ namespace CORE_Layer.Services
 
         }
 
-     
+        public async Task<Pagintation<GetUserDto>> GetAllWithSpecs(EmployeeSpecParams serviceSpec)
+        {
+            var spec = new EmployeeWithDegreeState(serviceSpec);
+            var Countspec = new EmployeeWithFiltersForCountSpecs(serviceSpec);
+            var totalCount = await _unitOfWork.Repository<AppUser>().Count(Countspec);
+            var Employees = await _unitOfWork.Repository<AppUser>().GetAllDataWithSpecAsync(spec);
+            var mapping = _mapper.Map<List<GetUserDto>>(Employees);
+            return new Pagintation<GetUserDto>(mapping, serviceSpec.PageSize, totalCount, serviceSpec.PageIndex);
+
+        }
 
         public async Task<Response<AppUser>> UpdateUser(UpdateUserDto userDTO)
         {
@@ -67,10 +89,18 @@ namespace CORE_Layer.Services
             if (user == null)
                 return new Response<AppUser>(404, "Can`t Find This Employee");
 
-            var result = _mapper.Map<UpdateUserDto,AppUser>(userDTO);
-             _unitOfWork.Repository<AppUser>().Update(result);
+            //var result = _mapper.Map<UpdateUserDto,AppUser>(userDTO);
+
+            user.Name = userDTO.Name;
+            user.Email = userDTO.Email;
+            user.PhoneNumber = userDTO.PhoneNumber;
+            user.DegreeStateId = userDTO.DegreeStateId;
+            user.User_Image = userDTO.User_Image;
+            
+            _unitOfWork.Repository<AppUser>().Update(user);
             await _unitOfWork.Complete();
-            return new Response<AppUser>(200, "Employee Updated Successfully");
+            return new Response<AppUser>(200, "User profile updated successfully");
+
         }
     }
     }
