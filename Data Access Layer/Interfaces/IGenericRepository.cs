@@ -17,5 +17,9 @@ namespace Data_Access_Layer.Interfaces
         Task Add(T entity);
         T Delete(T entity);
         T Update(T entity);
+        Task<int> Count(ISpecification<T> spec);
+        Task<List<T>> GetAllDataWithSpecAsync(ISpecification<T> spec);
+        Task<T> GetDataByIdWithSpecAsync(ISpecification<T> spec);
+
     }
 }

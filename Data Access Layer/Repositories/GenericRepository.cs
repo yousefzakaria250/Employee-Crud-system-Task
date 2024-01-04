@@ -21,10 +21,15 @@ namespace Data_Access_Layer.Repositories
         }
 
         public async Task Add(T entity) => await userContext.Set<T>().AddAsync(entity);
-        
+
+        public async Task<int> Count(ISpecification<T> spec)
+         => await ApplySpecification(spec).CountAsync();
         public  T Delete(T entity) =>  userContext.Set<T>().Remove(entity).Entity;
 
         public async Task<List<T>> GetAllAsync() => await userContext.Set<T>().ToListAsync();
+
+        public async Task<List<T>> GetAllDataWithSpecAsync(ISpecification<T> spec)
+      => await ApplySpecification(spec).ToListAsync();
 
         public async Task<T> GetByIdAsync(int id) => await userContext.Set<T>().FindAsync(id);
 
@@ -41,8 +46,14 @@ namespace Data_Access_Layer.Repositories
 
         public async Task<T> GetByNameAsync(string Name) => await userContext.Set<T>().FindAsync(Name);
 
+        public async Task<T> GetDataByIdWithSpecAsync(ISpecification<T> spec) => await ApplySpecification(spec).FirstOrDefaultAsync();
+
+        private IQueryable<T> ApplySpecification(ISpecification<T> spec)
+        {
+            return SpecificationEvaluator<T>.GetQuery(userContext.Set<T>(), spec);
+        }
         public async Task<T> GetData_ByExepressionAsync(Expression<Func<T, bool>> expression) => await userContext.Set<T>().FirstAsync(expression);
 
-        public T Update(T entity) => userContext.Update(entity).Entity;       
+        public T Update(T entity) => userContext.Set<T>().Update(entity).Entity;       
     }
 }
