@@ -12,11 +12,12 @@ namespace CORE_Layer.Services
 {
     public interface IEmployeeService
     {
-        Task<Response<AppUser>> Add(AddUserDto userDTO);
+        Task<Response<AppUser>> Add(AddUserDto userDTO , string UserId);
 
         Task<List<GetUserDto>> GetAllUsers();
         Task<List<DegreeState>> GetEmployeeStates();
         Task<Pagintation<GetUserDto>> GetAllWithSpecs(EmployeeSpecParams serviceSpec);
+        Task<List<GetUserDto>> GetAllUsersWithId(EmployeeSpecParams serviceSpec  , string UserId);
 
         Task<Response<AppUser>> UpdateUser(UpdateUserDto userDTO);
         Task<Response<AppUser>> DeleteUser(string userId);

@@ -35,7 +35,7 @@ namespace User_Manager.API.Controllers
             var result = await _employeeService.Add(UserDto , userId.Id);
             return Ok(result);
         }
-        [Authorize]
+        [Authorize(Roles="Admin")]
         [HttpGet("GetAllUser")]
         public async Task<ActionResult<GetUserDto>> GetAll([FromQuery] EmployeeSpecParams spec)
         {
@@ -44,6 +44,22 @@ namespace User_Manager.API.Controllers
                 return Ok(new Response<AppUser>(404, "No Users yet"));
             return Ok(result);
         }
+
+        [Authorize]
+        [HttpGet("GetAllUserWithSupervisior")]
+        public async Task<ActionResult<GetUserDto>> GetAllWitId([FromQuery] EmployeeSpecParams spec)
+        {
+            var email = User.FindFirstValue(ClaimTypes.Email);
+            var user = await _userManager.FindByEmailAsync(email);
+            var userId = await _userService.Get(user.Id);
+            var result = await _employeeService.GetAllUsersWithId(spec , userId.Id);
+            if (result == null)
+                return Ok(new Response<AppUser>(404, "No Users yet"));
+            return Ok(result);
+        }
+
+
+
         [Authorize]
         [HttpGet("EmployeeState (Graduated / UnGraduated)")]
         

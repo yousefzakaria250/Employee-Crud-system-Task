@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,13 +32,14 @@ namespace CORE_Layer.Services
             _tokenService = tokenService;
         }
 
-        public async Task<Response<AppUser>> Add(AddUserDto userDTO)
+        public async Task<Response<AppUser>> Add(AddUserDto userDTO , string UserId)
         {
             var AppUserExist = await _AppUserManager.FindByEmailAsync(userDTO.Email);
             if (AppUserExist != null)
                 return new Response<AppUser>(405, "this email Already Exists!");
 
             var user = _mapper.Map<AddUserDto, AppUser>(userDTO);
+            user.SupervisiorId =  UserId;
             await _unitOfWork.Repository<AppUser>().Add(user);
             await _unitOfWork.Complete();
 
@@ -64,6 +66,17 @@ namespace CORE_Layer.Services
             return Result;
 
         }
+
+        public async Task<List<GetUserDto>> GetAllUsersWithId(EmployeeSpecParams serviceSpec , string UserId)
+        {
+            var spec = new EmployeeWithDegreeState(serviceSpec);
+            var Countspec = new EmployeeWithFiltersForCountSpecs(serviceSpec);
+            var totalCount = await _unitOfWork.Repository<AppUser>().Count(Countspec);
+            var Employees = await _unitOfWork.Repository<AppUser>().GetData_ByExepressionAsync( U => U.SupervisiorId == UserId , new[] { "DegreeState" });
+            var Result = _mapper.Map<List<GetUserDto>>(Employees);
+            return Result;
+        }
+
 
         public async Task<Pagintation<GetUserDto>> GetAllWithSpecs(EmployeeSpecParams serviceSpec)
         {

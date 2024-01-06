@@ -20,6 +20,8 @@ namespace Data_Access_Layer.Interfaces
         Task<int> Count(ISpecification<T> spec);
         Task<List<T>> GetAllDataWithSpecAsync(ISpecification<T> spec);
         Task<T> GetDataByIdWithSpecAsync(ISpecification<T> spec);
+        Task<List<T>> GetData_ByExepressionAsync(Expression<Func<T, bool>> expression, string[]? includes = null);
+
 
     }
 }
