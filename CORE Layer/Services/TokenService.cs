@@ -43,7 +43,7 @@ namespace CORE_Layer.Services
                 new Claim("UserId" ,user.Id.ToString()),
                 new Claim(JwtRegisteredClaimNames.Sub,user.Name),
                 new Claim(JwtRegisteredClaimNames.Jti,Guid.NewGuid().ToString()),
-                new Claim(JwtRegisteredClaimNames.Email,user.Email)
+                new Claim(JwtRegisteredClaimNames.Email,user.Email),
             }.Union(UserClaims).Union(roleClaims);
             SecurityKey securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:secret"]));
             SigningCredentials signingCred = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);

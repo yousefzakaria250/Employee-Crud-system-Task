@@ -11,6 +11,7 @@ namespace Db_Builder.Models.User_Manager
 
     public class DegreeState :BaseEntity
     {
+        
         public string State {  get; set; }
     }
 }

@@ -37,7 +37,7 @@ namespace User_Manager.API.Controllers
         }
 
 
-        [HttpGet("Login")]
+        [HttpPost("Login")]
         public async Task<IActionResult> Login(LoginDto userDTO)
         {
             if (ModelState.IsValid)
