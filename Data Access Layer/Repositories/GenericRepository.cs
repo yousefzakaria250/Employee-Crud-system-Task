@@ -54,6 +54,15 @@ namespace Data_Access_Layer.Repositories
         }
         public async Task<T> GetData_ByExepressionAsync(Expression<Func<T, bool>> expression) => await userContext.Set<T>().FirstAsync(expression);
 
-        public T Update(T entity) => userContext.Set<T>().Update(entity).Entity;       
+        public T Update(T entity) => userContext.Set<T>().Update(entity).Entity;
+
+        public async Task<List<T>> GetData_ByExepressionAsync(Expression<Func<T, bool>> expression, string[]? includes = null)
+        {
+            IQueryable<T> query = userContext.Set<T>();
+            if (includes != null)
+                foreach (var incluse in includes)
+                    query = query.Include(incluse);
+            return await query.Where(expression).ToListAsync();
+        }
     }
 }
