@@ -5,7 +5,9 @@ using CORE_Layer.Specification.Employee_Specs;
 using Db_Builder.Models.User_Manager;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace User_Manager.API.Controllers
 {
@@ -14,16 +16,23 @@ namespace User_Manager.API.Controllers
     public class EmployeeController : ControllerBase
     {
         private readonly IEmployeeService _employeeService;
-        public EmployeeController(IEmployeeService employeeService)
+        private readonly IUserService _userService; 
+        private readonly UserManager<AppUser> _userManager;
+        public EmployeeController(IEmployeeService employeeService, IUserService userService, UserManager<AppUser> userManager)
         {
             _employeeService = employeeService;
+            _userService = userService;
+            _userManager = userManager;
         }
 
         [Authorize(Roles ="User")]
         [HttpPost("AddUser")]
         public async Task<IActionResult> Add([FromBody] AddUserDto UserDto)
         {
-            var result = await _employeeService.Add(UserDto);
+            var email = User.FindFirstValue(ClaimTypes.Email);
+            var user = await _userManager.FindByEmailAsync(email);
+            var userId = await _userService.Get(user.Id);
+            var result = await _employeeService.Add(UserDto , userId.Id);
             return Ok(result);
         }
         [Authorize]
