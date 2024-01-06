@@ -4,6 +4,7 @@ using Data_Access_Layer.ContextDb;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data_Access_Layer.Migrations
 {
     [DbContext(typeof(UserContext))]
-    partial class UserContextModelSnapshot : ModelSnapshot
+    [Migration("20240106000437_UpdateAppUserandAddingSupervisiedUser")]
+    partial class UpdateAppUserandAddingSupervisiedUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,6 +37,7 @@ namespace Data_Access_Layer.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("DegreeStateId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
@@ -257,7 +260,9 @@ namespace Data_Access_Layer.Migrations
                 {
                     b.HasOne("Db_Builder.Models.User_Manager.DegreeState", "DegreeState")
                         .WithMany()
-                        .HasForeignKey("DegreeStateId");
+                        .HasForeignKey("DegreeStateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Db_Builder.Models.User_Manager.AppUser", "Supervisior")
                         .WithMany()

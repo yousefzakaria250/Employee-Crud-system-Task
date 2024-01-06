@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data_Access_Layer.Migrations
 {
     [DbContext(typeof(UserContext))]
-    [Migration("20240103065635_CreateUserAndDegreeState")]
-    partial class CreateUserAndDegreeState
+    [Migration("20240105233415_CreateAppUserTable")]
+    partial class CreateAppUserTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
