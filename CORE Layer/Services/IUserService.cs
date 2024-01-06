@@ -12,14 +12,9 @@ namespace CORE_Layer.Services
 {
     public interface IUserService
     {
-        Task<Response<AppUser>> Add(AddUserDto userDTO);
-
-        Task<List<GetUserDto>> GetAllUsers();
-        Task<Pagintation<GetUserDto>> GetAllWithSpecs(EmployeeSpecParams serviceSpec);
-
+        Task<AuthResponse> Login(LoginDto userDto);
+        Task<AuthResponse> RegisterAsync(RegisterDto userDTO);
         Task<GetUserDto> Get(string id);
-        Task<Response<AppUser>> UpdateUser(UpdateUserDto userDTO);
-        Task<Response<AppUser>> DeleteUser(string userId);
 
 
 

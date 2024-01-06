@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,88 +21,98 @@ namespace CORE_Layer.Services
     {
         private readonly IMapper _mapper;
         private readonly IGenericRepository<AppUser> _repository;
-        private readonly UserManager<AppUser> _AppUserManager;
+        private readonly UserManager<AppUser> _userManager;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly ITokenService _tokenService;
 
 
 
-        public UserServices(IMapper mapper, IGenericRepository<AppUser> repository, UserManager<AppUser> appUserManager, IUnitOfWork unitOfWork)
+        public UserServices(IMapper mapper, IGenericRepository<AppUser> repository, UserManager<AppUser> userManager, IUnitOfWork unitOfWork, ITokenService tokenService)
         {
             _mapper = mapper;
             _repository = repository;
-            _AppUserManager = appUserManager;
+            _userManager = userManager;
             _unitOfWork = unitOfWork;
-        }
-        public async Task<Response<AppUser>> Add(AddUserDto userDTO)
-        {
-            var AppUserExist = await _AppUserManager.FindByEmailAsync(userDTO.Email);
-            if (AppUserExist != null)
-                return new Response<AppUser>(405, "this email Already Exists!");
-
-            var user = _mapper.Map<AddUserDto, AppUser>(userDTO);
-            await _unitOfWork.Repository<AppUser>().Add(user);
-            await _unitOfWork.Complete();
-          
-            return new Response<AppUser>(200, "Employee added successfully");
+            _tokenService = tokenService;
         }
 
-        public async Task<Response<AppUser>> DeleteUser(string userId)
+
+        public async Task<AuthResponse> Login(LoginDto userDto)
         {
-            var AppUser = await _AppUserManager.FindByIdAsync(userId);
+            var AuthModel = new AuthResponse();
+            AppUser user = await _userManager.FindByNameAsync(userDto.Email);
+            if (user == null)
+            {
+                AuthModel.Message = " Email or Password is not correct";
+                return AuthModel;
+            }
+            else
+            {
+                bool found = await _userManager.CheckPasswordAsync(user, userDto.Password);
+                if (found){
+                    var myToken = await _tokenService.CreateJwtToken(user);
+                    var roleList = await _userManager.GetRolesAsync(user);
+                    AuthModel.IsAuthenticated = true;
+                    AuthModel.Token = new JwtSecurityTokenHandler().WriteToken(myToken);
+                    AuthModel.Email = user.Email;
+                    AuthModel.Name = user.Name;
+                    AuthModel.ExpiresOn = myToken.ValidTo;
+                    return AuthModel;
+                }
+                else{
+                        AuthModel.Message = "Password is not correct";
+                        return AuthModel;
+                    }
+            }
+        }
 
-            if (AppUser == null)
-                return new Response<AppUser>(404, "this User does not exist");
 
-            _unitOfWork.Repository<AppUser>().Delete(AppUser);
-            await _unitOfWork.Complete();
-            return new Response<AppUser>(200, "User is Deleted successfully");
+        public async Task<AuthResponse> RegisterAsync(RegisterDto userDTO)
+        {
+            //check if user has email registered before
+            if (await _userManager.FindByEmailAsync(userDTO.Email) is not null)
+                return new AuthResponse { Message = "Email Used Before ." };
+            //check if any user uses the same UserName
+            AppUser user = new AppUser();
+            user.Id = Guid.NewGuid().ToString();
+            user.Name = userDTO.Name;
+            user.UserName = userDTO.Name;
+            user.Email = userDTO.Email;
+            user.PasswordHash = userDTO.Password;
+            //create user in database
+
+            IdentityResult result = await _userManager.CreateAsync(user, userDTO.Password);
+            if (result.Succeeded)
+            {
+                // assign  new user to Role As user
+                result = await _userManager.AddToRoleAsync(user, userDTO.UserRole);
+                if (!result.Succeeded)
+                    return new AuthResponse { Message = "Not Role Added" };
+
+                var jwtSecurityToken = await _tokenService.CreateJwtToken(user);
+                return new AuthResponse
+                {
+                    Email = user.Email,
+                    ExpiresOn = jwtSecurityToken.ValidTo,
+                    IsAuthenticated = true,
+                    Role = userDTO.UserRole ,
+                    Token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken),
+                    Name = user.Name
+                };
+            }
+
+            return new AuthResponse { Message = "User Not Added" };
+
         }
 
         public async Task<GetUserDto> Get(string id)
         {
 
-            var user = await _AppUserManager.FindByIdAsync(id);
+            var user = await _userManager.FindByIdAsync(id);
             var result = _mapper.Map<AppUser, GetUserDto>(user);
             return result;
         }
 
-        public async Task<List<GetUserDto>> GetAllUsers()
-        {
-            var Employees = await _unitOfWork.Repository<AppUser>().GetAllAsync();
-            var Result = _mapper.Map<List<GetUserDto>>(Employees);
-            return Result;
-
-        }
-
-        public async Task<Pagintation<GetUserDto>> GetAllWithSpecs(EmployeeSpecParams serviceSpec)
-        {
-            var spec = new EmployeeWithDegreeState(serviceSpec);
-            var Countspec = new EmployeeWithFiltersForCountSpecs(serviceSpec);
-            var totalCount = await _unitOfWork.Repository<AppUser>().Count(Countspec);
-            var Employees = await _unitOfWork.Repository<AppUser>().GetAllDataWithSpecAsync(spec);
-            var mapping = _mapper.Map<List<GetUserDto>>(Employees);
-            return new Pagintation<GetUserDto>(mapping, serviceSpec.PageSize, totalCount, serviceSpec.PageIndex);
-
-        }
-
-        public async Task<Response<AppUser>> UpdateUser(UpdateUserDto userDTO)
-        {
-            var user = await _AppUserManager.FindByIdAsync(userDTO.Id);
-            if (user == null)
-                return new Response<AppUser>(404, "Can`t Find This Employee");
-
-            //var result = _mapper.Map<UpdateUserDto,AppUser>(userDTO);
-
-            user.Name = userDTO.Name;
-            user.Email = userDTO.Email;
-            user.PhoneNumber = userDTO.PhoneNumber;
-            user.DegreeStateId = userDTO.DegreeStateId;
-            user.User_Image = userDTO.User_Image;
-            
-            _unitOfWork.Repository<AppUser>().Update(user);
-            await _unitOfWork.Complete();
-            return new Response<AppUser>(200, "User profile updated successfully");
-
-        }
     }
+
     }
