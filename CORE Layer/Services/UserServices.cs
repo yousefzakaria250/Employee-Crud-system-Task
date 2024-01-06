@@ -42,7 +42,7 @@ namespace CORE_Layer.Services
         public async Task<AuthResponse> Login(LoginDto userDto)
         {
             var AuthModel = new AuthResponse();
-            AppUser user = await _userManager.FindByNameAsync(userDto.Email);
+            AppUser user = await _userManager.FindByEmailAsync(userDto.Email);
             if (user == null)
             {
                 AuthModel.Message = " Email or Password is not correct";
