@@ -37,7 +37,7 @@ namespace User_Manager.API.Controllers
         }
 
 
-        [HttpPost("Login")]
+        [HttpGet("Login")]
         public async Task<IActionResult> Login(LoginDto userDTO)
         {
             if (ModelState.IsValid)
@@ -63,6 +63,12 @@ namespace User_Manager.API.Controllers
             return Ok(res);
         }
 
+        [HttpGet("GetAllRoles")]
+        public async Task<IActionResult> GetAllRoles()
+        {
+            var result = await _userservice.GetAllRoles();
+            return Ok(result);
+        }
 
 
     }

@@ -2,6 +2,7 @@
 using CORE_Layer.Helper;
 using CORE_Layer.Specification.Employee_Specs;
 using Db_Builder.Models.User_Manager;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,7 @@ namespace CORE_Layer.Services
         Task<AuthResponse> Login(LoginDto userDto);
         Task<AuthResponse> RegisterAsync(RegisterDto userDTO);
         Task<GetUserDto> Get(string id);
-
-
-
+        Task<Response<List<IdentityRole>>> GetAllRoles();
 
     }
 }

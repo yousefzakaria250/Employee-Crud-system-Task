@@ -22,18 +22,20 @@ namespace CORE_Layer.Services
         private readonly IMapper _mapper;
         private readonly IGenericRepository<AppUser> _repository;
         private readonly UserManager<AppUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ITokenService _tokenService;
 
 
 
-        public UserServices(IMapper mapper, IGenericRepository<AppUser> repository, UserManager<AppUser> userManager, IUnitOfWork unitOfWork, ITokenService tokenService)
+        public UserServices(IMapper mapper, IGenericRepository<AppUser> repository, UserManager<AppUser> userManager, IUnitOfWork unitOfWork, ITokenService tokenService, RoleManager<IdentityRole> roleManager)
         {
             _mapper = mapper;
             _repository = repository;
             _userManager = userManager;
             _unitOfWork = unitOfWork;
             _tokenService = tokenService;
+            _roleManager = roleManager;
         }
 
 
@@ -113,6 +115,15 @@ namespace CORE_Layer.Services
             return result;
         }
 
+        public async Task<Response<List<IdentityRole>>> GetAllRoles()
+        {
+            var result = await _roleManager.Roles.ToListAsync();
+
+            if (result == null)
+                return new Response<List<IdentityRole>>(404, "No Roles yet");
+            return new Response<List<IdentityRole>>(result);
+
+        }
     }
 
     }
