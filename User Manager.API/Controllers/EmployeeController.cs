@@ -25,7 +25,6 @@ namespace User_Manager.API.Controllers
             return Ok(result);
         }
 
-
         [HttpGet("GetAllUser")]
         public async Task<ActionResult<GetUserDto>> GetAll([FromQuery] EmployeeSpecParams spec)
         {
@@ -33,6 +32,13 @@ namespace User_Manager.API.Controllers
             if (result == null)
                 return Ok(new Response<AppUser>(404, "No Users yet"));
             return Ok(result);
+        }
+
+        [HttpGet("EmployeeState (Graduated / UnGraduated)")]
+        
+        public async Task<ActionResult<DegreeState>> EmployeeState()
+        {
+            return Ok(await _employeeService.GetEmployeeStates());
         }
 
 

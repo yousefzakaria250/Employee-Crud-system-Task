@@ -45,8 +45,6 @@ namespace CORE_Layer.Services
         }
 
 
-      
-
         public async Task<Response<AppUser>> DeleteUser(string userId)
         {
             var AppUser = await _AppUserManager.FindByIdAsync(userId);
@@ -78,6 +76,12 @@ namespace CORE_Layer.Services
 
         }
 
+        public Task<List<DegreeState>> GetEmployeeStates()
+        {
+            return
+            _unitOfWork.Repository<DegreeState>().GetAllAsync();
+        }
+
         public async Task<Response<AppUser>> UpdateUser(UpdateUserDto userDTO)
         {
             var user = await _AppUserManager.FindByIdAsync(userDTO.Id);
@@ -85,7 +89,6 @@ namespace CORE_Layer.Services
                 return new Response<AppUser>(404, "Can`t Find This Employee");
 
             //var result = _mapper.Map<UpdateUserDto,AppUser>(userDTO);
-
             user.Name = userDTO.Name;
             user.Email = userDTO.Email;
             user.PhoneNumber = userDTO.PhoneNumber;

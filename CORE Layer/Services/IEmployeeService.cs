@@ -15,6 +15,7 @@ namespace CORE_Layer.Services
         Task<Response<AppUser>> Add(AddUserDto userDTO);
 
         Task<List<GetUserDto>> GetAllUsers();
+        Task<List<DegreeState>> GetEmployeeStates();
         Task<Pagintation<GetUserDto>> GetAllWithSpecs(EmployeeSpecParams serviceSpec);
 
         Task<Response<AppUser>> UpdateUser(UpdateUserDto userDTO);
