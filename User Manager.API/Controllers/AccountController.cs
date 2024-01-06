@@ -1,8 +1,6 @@
 ﻿using CORE_Layer.Dtos;
-using CORE_Layer.Helper;
 using CORE_Layer.Services;
-using CORE_Layer.Specification.Employee_Specs;
-using Db_Builder.Models.User_Manager;
+using Data_Access_Layer.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,29 +11,50 @@ namespace User_Manager.API.Controllers
     public class AccountController : ControllerBase
     {
         private readonly IUserService _userservice;
-        public AccountController(IUserService service)
-        {
-            _userservice = service;
-        }
 
-        [HttpPost("AddUser")]
-        public async Task<IActionResult> Add([FromBody] AddUserDto UserDto)
+        public AccountController(IUserService userservice)
         {
-            var result = await _userservice.Add(UserDto);
-            return Ok(result);
+            _userservice = userservice;
+           
         }
 
 
-        [HttpGet("GetAllUser")]
-        public async Task<ActionResult<GetUserDto>> GetAll([FromQuery] EmployeeSpecParams spec)
+        [HttpPost("Register")]
+        public async Task<IActionResult> Register(RegisterDto userDTO)
         {
-            var result = await _userservice.GetAllWithSpecs(spec);
-            if (result == null)
-                return Ok(new Response<AppUser>(404, "No Users yet"));
-            return Ok(result);
+            if (ModelState.IsValid)
+            {
+                var authenticationModel = await _userservice.RegisterAsync(userDTO);
+                if (authenticationModel.IsAuthenticated)
+                {
+                    return Ok(new { Token = authenticationModel.Token, Expiration = authenticationModel.ExpiresOn });
+                }
+
+                return
+                    BadRequest(authenticationModel.Message);
+            }
+            return BadRequest(ModelState);
         }
 
-        [HttpGet("GetUser")]
+
+        [HttpPost("Login")]
+        public async Task<IActionResult> Login(LoginDto userDTO)
+        {
+            if (ModelState.IsValid)
+            {
+                var authenticationModel = await _userservice.Login(userDTO);
+                if (authenticationModel.IsAuthenticated)
+                {
+                    return Ok(new { Token = authenticationModel.Token, Expiration = authenticationModel.ExpiresOn });
+                }
+                return
+                    BadRequest(authenticationModel.Message);
+            }
+            return BadRequest(ModelState);
+        }
+
+
+        [HttpGet("GetCurrentUser")]
         public async Task<ActionResult<GetUserDto>> GetUser(string id)
         {
             var res = await _userservice.Get(id);
@@ -45,20 +64,6 @@ namespace User_Manager.API.Controllers
         }
 
 
-        [HttpPut("Update")]
-        public async Task<IActionResult> Update(UpdateUserDto userDto)
-        {
-            var res = await _userservice.UpdateUser(userDto);
-            return Ok(res);
-        }
 
-        [HttpPatch("DeleteUser")]
-       
-        public async Task<ActionResult<AddUserDto>> DeleteUser(string id)
-        {
-            var result = await _userservice.DeleteUser(id);
-            return Ok(result);
-
-        }
     }
 }
