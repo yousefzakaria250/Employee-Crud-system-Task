@@ -24,8 +24,18 @@ builder.Services.AddSwaggerGen();
     builder.Services.AddDbContext<UserContext>(options =>
          options.UseSqlServer(builder.Configuration.GetConnectionString("AppConn")));
 
+// Add services to the container.
+string allowSpecificOrigins = "_allowSpecificOrigins";
 
-    // Generic Repository
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(allowSpecificOrigins, builder => builder
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    );
+});
+// Generic Repository
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<ITokenService, TokenService>();
@@ -64,6 +74,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors(allowSpecificOrigins);
 app.UseHttpsRedirection();
 
 app.UseAuthentication();

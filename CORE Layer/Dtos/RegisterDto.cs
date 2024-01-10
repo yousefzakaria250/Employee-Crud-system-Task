@@ -17,7 +17,6 @@ namespace CORE_Layer.Dtos
         public string UserRole { get; set; }
         [Required]
         public string Password { set; get; }
-        [Required]
-        public string ConfirmPassword { set; get; }
+   
     }
 }

@@ -27,15 +27,19 @@ namespace User_Manager.API.Controllers
 
         [Authorize(Roles ="User")]
         [HttpPost("AddUser")]
-        public async Task<IActionResult> Add([FromBody] AddUserDto UserDto)
+        public async Task<IActionResult> Add([FromForm] AddUserDto UserDto)
         {
-            var email = User.FindFirstValue(ClaimTypes.Email);
-            var user = await _userManager.FindByEmailAsync(email);
-            var userId = await _userService.Get(user.Id);
-            var result = await _employeeService.Add(UserDto , userId.Id);
-            return Ok(result);
+            if (ModelState.IsValid)
+            {
+                var email = User.FindFirstValue(ClaimTypes.Email);
+                var user = await _userManager.FindByEmailAsync(email);
+                var userId = await _userService.Get(user.Id);
+                var result = await _employeeService.Add(UserDto, userId.Id);
+                return Ok(result);
+            }
+            return BadRequest(ModelState);
         }
-        [Authorize(Roles="Admin")]
+       // [Authorize(Roles="Admin")]
         [HttpGet("GetAllUser")]
         public async Task<ActionResult<GetUserDto>> GetAll([FromQuery] EmployeeSpecParams spec)
         {

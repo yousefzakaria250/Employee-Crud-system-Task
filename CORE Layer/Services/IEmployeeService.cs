@@ -2,6 +2,7 @@
 using CORE_Layer.Helper;
 using CORE_Layer.Specification.Employee_Specs;
 using Db_Builder.Models.User_Manager;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,8 @@ namespace CORE_Layer.Services
 
         Task<Response<AppUser>> UpdateUser(UpdateUserDto userDTO);
         Task<Response<AppUser>> DeleteUser(string userId);
+        public string ConvertImage(IFormFile image);
+
 
     }
 }

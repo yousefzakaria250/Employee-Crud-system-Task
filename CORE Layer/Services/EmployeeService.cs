@@ -4,6 +4,7 @@ using CORE_Layer.Helper;
 using CORE_Layer.Specification.Employee_Specs;
 using Data_Access_Layer.Interfaces;
 using Db_Builder.Models.User_Manager;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -37,13 +38,14 @@ namespace CORE_Layer.Services
             var AppUserExist = await _AppUserManager.FindByEmailAsync(userDTO.Email);
             if (AppUserExist != null)
                 return new Response<AppUser>(405, "this email Already Exists!");
-
             var user = _mapper.Map<AddUserDto, AppUser>(userDTO);
+          //  string Image = ConvertImage(userDTO.User_Image);
             user.SupervisiorId =  UserId;
+           // user.User_Image = Image;
             await _unitOfWork.Repository<AppUser>().Add(user);
             await _unitOfWork.Complete();
-
             return new Response<AppUser>(200, "Employee added successfully");
+        
         }
 
 
@@ -112,6 +114,20 @@ namespace CORE_Layer.Services
             await _unitOfWork.Complete();
             return new Response<AppUser>(200, "User profile updated successfully");
 
+        }
+
+        public string ConvertImage( IFormFile image)
+        {
+            IFormFile file = image;
+            string NewName = Guid.NewGuid().ToString() + file.FileName;
+            FileStream fs = new FileStream(
+                 Path.Combine(Directory.GetCurrentDirectory(),
+                  "Content", "Images", NewName)
+                 , FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            file.CopyTo(fs);
+            fs.Position = 0;
+
+            return NewName;
         }
 
     }
