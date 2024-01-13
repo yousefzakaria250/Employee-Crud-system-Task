@@ -27,7 +27,7 @@ namespace User_Manager.API.Controllers
 
         [Authorize(Roles ="User")]
         [HttpPost("AddUser")]
-        public async Task<IActionResult> Add([FromForm] AddUserDto UserDto)
+        public async Task<IActionResult> Add([FromBody] AddUserDto UserDto)
         {
             if (ModelState.IsValid)
             {
@@ -54,6 +54,10 @@ namespace User_Manager.API.Controllers
         public async Task<ActionResult<GetUserDto>> GetAllWitId([FromQuery] EmployeeSpecParams spec)
         {
             var email = User.FindFirstValue(ClaimTypes.Email);
+            var role = User.FindFirstValue(ClaimTypes.Role);
+
+            if( role == "Admin")
+                 return Ok( await _employeeService.GetAllWithSpecs(spec) );
             var user = await _userManager.FindByEmailAsync(email);
             var userId = await _userService.Get(user.Id);
             var result = await _employeeService.GetAllUsersWithId(spec , userId.Id);
@@ -62,11 +66,8 @@ namespace User_Manager.API.Controllers
             return Ok(result);
         }
 
-
-
         [Authorize]
         [HttpGet("EmployeeState (Graduated / UnGraduated)")]
-        
         public async Task<ActionResult<DegreeState>> EmployeeState()
         {
             return Ok(await _employeeService.GetEmployeeStates());

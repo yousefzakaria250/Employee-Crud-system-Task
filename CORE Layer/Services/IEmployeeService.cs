@@ -18,7 +18,7 @@ namespace CORE_Layer.Services
         Task<List<GetUserDto>> GetAllUsers();
         Task<List<DegreeState>> GetEmployeeStates();
         Task<Pagintation<GetUserDto>> GetAllWithSpecs(EmployeeSpecParams serviceSpec);
-        Task<List<GetUserDto>> GetAllUsersWithId(EmployeeSpecParams serviceSpec  , string UserId);
+        Task<Pagintation<GetUserDto>> GetAllUsersWithId(EmployeeSpecParams serviceSpec  , string UserId);
 
         Task<Response<AppUser>> UpdateUser(UpdateUserDto userDTO);
         Task<Response<AppUser>> DeleteUser(string userId);

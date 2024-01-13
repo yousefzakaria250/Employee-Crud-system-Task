@@ -69,14 +69,14 @@ namespace CORE_Layer.Services
 
         }
 
-        public async Task<List<GetUserDto>> GetAllUsersWithId(EmployeeSpecParams serviceSpec , string UserId)
+        public async Task<Pagintation<GetUserDto>> GetAllUsersWithId(EmployeeSpecParams serviceSpec , string UserId)
         {
             var spec = new EmployeeWithDegreeState(serviceSpec);
             var Countspec = new EmployeeWithFiltersForCountSpecs(serviceSpec);
             var totalCount = await _unitOfWork.Repository<AppUser>().Count(Countspec);
             var Employees = await _unitOfWork.Repository<AppUser>().GetData_ByExepressionAsync( U => U.SupervisiorId == UserId , new[] { "DegreeState" });
             var Result = _mapper.Map<List<GetUserDto>>(Employees);
-            return Result;
+            return new Pagintation<GetUserDto>(Result, serviceSpec.PageSize, totalCount, serviceSpec.PageIndex);
         }
 
 
@@ -88,7 +88,6 @@ namespace CORE_Layer.Services
             var Employees = await _unitOfWork.Repository<AppUser>().GetAllDataWithSpecAsync(spec);
             var mapping = _mapper.Map<List<GetUserDto>>(Employees);
             return new Pagintation<GetUserDto>(mapping, serviceSpec.PageSize, totalCount, serviceSpec.PageIndex);
-
         }
 
         public Task<List<DegreeState>> GetEmployeeStates()

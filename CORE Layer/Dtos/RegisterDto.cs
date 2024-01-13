@@ -12,6 +12,7 @@ namespace CORE_Layer.Dtos
         [Required]
         public string Name { set; get; }
         [Required]
+
         public string Email { set; get; }
         [Required]
         public string UserRole { get; set; }
